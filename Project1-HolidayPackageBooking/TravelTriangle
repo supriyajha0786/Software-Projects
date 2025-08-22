@@ -1,0 +1,100 @@
+
+## TravelTriangle Manual Testing Project
+
+### Overview
+
+This project simulates a real-world QA manual testing effort for TravelTriangle—a holiday marketplace where travelers submit trip requests, receive multiple agent quotes, customize itineraries, and book their trip. The repository will include test planning and detailed test cases to highlight your testing craftsmanship.
+
+### User Flow Summary
+
+Based on TravelTriangle’s core features:
+
+* Travelers fill a **predefined form** with trip details.
+* Multiple **local travel agents** reply with customized quotes.
+* Travelers **review, compare, and customize** quotes.
+* Traveler **edits or cancels** requests as needed.
+* Traveler completes the booking and may **review the agent** post-trip. ([TravelTriangle.com][1])
+
+---
+
+### GitHub Repository Structure
+
+```
+traveltriangle-manual-testing/
+├── README.md
+├── TestPlan.md
+└── TestCases/
+    ├── PackageBrowsing_TestCases.md
+    ├── TripRequest_TestCases.md
+    ├── QuoteReview_TestCases.md
+    ├── EditCancel_TestCases.md
+    └── BookingTestCases.md
+```
+# TravelTriangle Manual Testing Project
+
+This repository contains structured manual testing artifacts for TravelTriangle—a travel marketplace.
+
+## Includes
+- **TestPlan.md** – Strategy, scope, timeline, and criteria.
+- **TestCases/** – Organized test scenarios and detailed steps.
+
+## Objective
+Demonstrate end-to-end manual testing of critical user workflows: browsing, request submission, quote handling, customization, and booking confirmation.
+```
+
+#### **TestPlan.md**
+
+* **Objective**: Ensure seamless user flow from trip request to booking with focus on usability, functionality, and UI validation.
+* **Scope**:
+
+  * In Scope: Trip request form, quote workflows, edit/cancel flows, booking confirmation.
+  * Out of Scope: Backend APIs, performance, and security.
+* **Strategy**: Functional, boundary value, UI/UX, and form validation testing across multiple browsers.
+* **Entry Criteria**: Stable environment, test data ready, stakeholders approval.
+* **Exit Criteria**: All high/critical test cases passed, major bugs fixed.
+* **Tools**: TestRail/TestLink for test management; JIRA/Redmine/ClickUp for defect logging.
+
+---
+
+### Sample Test Cases
+
+#### PackageBrowsing\_TestCases.md
+
+| TC ID       | Scenario                              | Steps                                         | Expected Result                            |
+| ----------- | ------------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| TC\_PB\_001 | Browse packages via categories        | Click “Honeymoon” → verify displayed packages | Related packages listed                    |
+| TC\_PB\_002 | Apply duration filter (e.g. 5–7 days) | Select duration → filter results              | Only matching durations displayed          |
+| TC\_PB\_003 | View package details                  | Click “Customize & Get Quotes” → open details | Package itinerary, inclusions, price shown |
+
+#### TripRequest\_TestCases.md
+
+| TC ID       | Scenario                  | Steps                                                    | Expected Result                    |
+| ----------- | ------------------------- | -------------------------------------------------------- | ---------------------------------- |
+| TC\_TR\_001 | Submit valid trip request | Fill all fields (destination, dates, travelers) → Submit | Submission confirmation displayed  |
+| TC\_TR\_002 | Invalid date sequence     | Enter return date before departure → Submit              | Date validation error displayed    |
+| TC\_TR\_003 | Missing mandatory field   | Leave “Destination” blank → Submit                       | Field validation error (mandatory) |
+
+#### QuoteReview\_TestCases.md
+
+* Ensure multiple agent quotes appear within specified timeframe.
+* Verify agents’ details (name, rating, quote).
+* Compare quotes side-by-side on price and inclusions.
+
+#### EditCancel\_TestCases.md
+
+* Submit changes via “Edit Request” → ensure updated quotes reflect new preferences.
+* Cancel request post-submission → verify status updates and customer communication. ([TravelTriangle.com][1])
+
+#### BookingTestCases.md
+
+* Complete booking with correct details → confirm booking confirmation page.
+* Verify application of refund and cancellation fee rules if cancellation is initiated post-payment. ([TravelTriangle.com][1])
+
+---
+
+### Why This Project Stands Out
+
+* Mirrors real-world travel marketplace workflows.
+* Demonstrates structured test planning, scenario coverage, and attention to business logic.
+* Extensible for future automation or API testing modules.
+

@@ -1,0 +1,62 @@
+# 📊 Test Metrics – [Project Name]
+
+This document provides the **key QA metrics** tracked during the testing lifecycle of the project.  
+Metrics help in measuring **test progress, quality, and efficiency**.
+
+---
+
+## 1. Test Case Metrics
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Total Test Cases** | Count of all designed test cases | 150 |
+| **Executed Test Cases** | (Executed / Total) × 100 | 120 / 150 = 80% |
+| **Passed Test Cases** | (Passed / Executed) × 100 | 100 / 120 = 83% |
+| **Failed Test Cases** | (Failed / Executed) × 100 | 20 / 120 = 17% |
+| **Blocked Test Cases** | Count of blocked cases due to environment / dependency | 5 |
+
+---
+
+## 2. Defect Metrics
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Defect Density** | Defects / Size of module (e.g., KLOC or Function Points) | 25 defects / 10 KLOC = 2.5 |
+| **Defect Leakage** | (Defects in UAT / Total Defects) × 100 | 5 / 50 = 10% |
+| **Defect Reopen Rate** | (Reopened Defects / Total Fixed) × 100 | 4 / 40 = 10% |
+| **Defect Removal Efficiency (DRE)** | (Defects removed before release / Total Defects) × 100 | 45 / 50 = 90% |
+
+---
+
+## 3. Test Execution Metrics
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Test Execution Progress** | (Executed Test Cases / Planned Test Cases) × 100 | 120 / 150 = 80% |
+| **Test Case Productivity** | Test Cases Designed / Effort (hrs or days) | 50 / 2 days = 25 per day |
+| **Automation Coverage** | (Automated Cases / Total Cases) × 100 | 60 / 150 = 40% |
+
+---
+
+## 4. Quality Metrics
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Requirement Coverage** | (Requirements Covered by Test Cases / Total Requirements) × 100 | 45 / 50 = 90% |
+| **Test Effectiveness** | (Defects found by QA / Total Defects) × 100 | 45 / 50 = 90% |
+| **Defect Severity Index (DSI)** | Σ (Defect Severity × Count) / Total Defects | (High=3×10 + Medium=2×20 + Low=1×20) / 50 |
+
+---
+
+## 5. Schedule Metrics
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Planned vs. Actual Execution** | (Actual Execution / Planned Execution) × 100 | 85% vs 100% |
+| **On-Time Delivery Rate** | (Milestones Met / Planned Milestones) × 100 | 4 / 5 = 80% |
+
+---
+
+## 6. Reporting
+- **Daily/Weekly Status Reports** shared with stakeholders.  
+- Graphs used: Test Execution Trend, Defect Trend, Requirement Coverage.  
+- Tools used: JIRA, TestRail, Excel Dashboards.  
+
+---
+
+✅ These metrics help stakeholders measure **quality, progress, and release readiness**.  

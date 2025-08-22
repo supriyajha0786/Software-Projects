@@ -1,0 +1,138 @@
+
+## TravelPlus Manual Testing Project — Flight "Book Now" Flow
+
+### Project Overview
+
+This project covers manual testing of the corporate travel platform feature where users can quickly book flights via the **“Book Now”** function. It focuses on selecting flights, entering traveler details, completing booking, and handling confirmations.
+
+---
+
+### Core Testing Areas
+
+1. **Flight Search & Selection**
+
+   * Input parameters: origin, destination, trip type (one-way/round-trip), dates, number of travelers, class.
+   * Validate search results list: flight timings, airlines, fare options.
+
+2. **Booking Input & Details Page**
+
+   * Choose flight from results and confirm fare—check pricing, baggage, seat options.
+   * Validate traveler details form: fields like name, contact, special requests.
+   * Apply promo codes and verify price adjustment.
+
+3. **Payment & Booking Flow**
+
+   * Payment options: corporate billing, credit card, or deferred billing.
+   * Handle form validation for payment info.
+   * Simulate confirmation page and verify booking reference and details.
+
+4. **Booking Confirmation & Dashboard**
+
+   * Verify confirmation is visible with flight details.
+   * Ensure booking shows up in “My Trips” or dashboard.
+   * Check for email/SMS notifications containing booking summary.
+
+5. **Edge Cases & Error Handling**
+
+   * Missing mandatory fields or invalid formats.
+   * Booking failure scenarios: network issues, payment errors.
+   * Handling stale or unavailable flight data mid-flow.
+
+---
+
+### GitHub Repo Structure
+
+```
+travelplus-flight-booknow-testing/
+├── README.md
+├── TestPlan.md
+└── TestCases/
+    ├── FlightSearch_TestCases.md
+    ├── FlightDetails_TestCases.md
+    ├── BookingFlow_TestCases.md
+    ├── Confirmation_TestCases.md
+    └── ErrorHandling_TestCases.md
+```
+
+---
+
+### File Contents
+
+# TravelPlus Flight Booking Manual Testing — Book Now Flow
+
+This repository outlines manual QA coverage for the “Book Now” flight booking feature on TravelPlus, focusing on end-to-end user experience from search to confirmation.
+
+## Includes:
+- **TestPlan.md** – Objectives, scope, strategy, tools.
+- **TestCases/** – Organized test scenarios covering all aspects of flight booking.
+
+Demonstrates expertise in user-centric QA for corporate flight booking workflows.
+```
+
+---
+
+#### **TestPlan.md**
+
+* **Objective**: Ensure the flight booking process works smoothly with accurate data and reliable confirmations.
+* **Scope**:
+
+  * *In Scope*: UI validation of flow, input forms, pricing accuracy, confirmation.
+  * *Out of Scope*: Backend APIs, load/performance tests.
+* **Approach**: Functional, validation, and edge-case testing across devices.
+* **Entry Criteria**: QA environment ready, test data available.
+* **Exit Criteria**: All critical test cases passed, major bugs resolved.
+* **Tools**: TestRail/TestLink for case management; JIRA/ClickUp/Redmine for issue tracking.
+
+---
+
+### Sample Test Cases
+
+#### **FlightSearch\_TestCases.md**
+
+| TC ID       | Scenario               | Steps                                                            | Expected Result                             |
+| ----------- | ---------------------- | ---------------------------------------------------------------- | ------------------------------------------- |
+| TC\_FS\_001 | One-way flight search  | Input origin, destination, date, 1 traveler, class; click search | List of flights matching criteria displayed |
+| TC\_FS\_002 | Round-trip filter      | Input return date; search                                        | Round-trip flights correctly listed         |
+| TC\_FS\_003 | Invalid date selection | Select past date; attempt search                                 | Error: invalid date message displayed       |
+
+---
+
+#### **FlightDetails\_TestCases.md**
+
+* **TC\_FD\_001**: Verify fare breakdown—base fare, taxes, fees.
+* **TC\_FD\_002**: Check seat class and baggage options are displayed accurately.
+* **TC\_FD\_003**: Validate promo code discount or validation message.
+
+---
+
+#### **BookingFlow\_TestCases.md**
+
+* **TC\_BF\_001**: Full booking with valid traveler and payment info → booking should succeed.
+* **TC\_BF\_002**: Missing traveler email → validation error should trigger.
+* **TC\_BF\_003**: Use deferred corporate billing → booking confirmed, billing pending.
+
+---
+
+#### **Confirmation\_TestCases.md**
+
+* **TC\_CN\_001**: Confirmation page shows booking ID, flight details, total cost.
+* **TC\_CN\_002**: Booking appears in “My Trips” dashboard with correct status.
+* **TC\_CN\_003**: Booking confirmation email sent with details included.
+
+---
+
+#### **ErrorHandling\_TestCases.md**
+
+* **TC\_ERR\_001**: Network interruption during booking → show retry prompt or error.
+* **TC\_ERR\_002**: Flight becomes unavailable while completing booking → prompt and redirect.
+* **TC\_ERR\_003**: Server error during booking → show friendly error message and rollback.
+
+---
+
+### Why This Project Shines
+
+* Captures a **complete flight booking lifecycle**, including interactive and confirmation stages.
+* Demonstrates strong QA abilities: functional validation, error handling, and UX awareness.
+* Easily extendable for **automation or API testing** phases later.
+
+---

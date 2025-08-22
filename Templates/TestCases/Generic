@@ -1,0 +1,87 @@
+# 🧪 Generic Test Case Document  
+
+This repository contains **sample manual test cases** that can be applied across different domains (e-commerce, travel, banking, healthcare, etc.).  
+Each test case is designed with **traceability, clarity, and reusability** in mind.  
+
+---
+
+## 📑 Test Case Format  
+
+| Field | Description |
+|-------|-------------|
+| **Test Case ID** | Unique identifier (e.g., TC_Login_001) |
+| **Module** | Application module under test |
+| **Title / Scenario** | Short description of what is being tested |
+| **Preconditions** | Setup required before executing the test |
+| **Test Steps** | Step-by-step actions to perform |
+| **Expected Result** | The outcome if the application works correctly |
+| **Actual Result** | The outcome observed during execution |
+| **Status** | Pass / Fail / Blocked / Not Executed |
+| **Defect Reference** | Link/ID of bug in JIRA, TestRail, etc. |
+
+---
+
+## ✅ Sample Test Cases  
+
+### 🔐 Login Module  
+
+| Test Case ID | Module | Title | Preconditions | Test Steps | Expected Result | Status | Defect Reference |
+|--------------|--------|-------|---------------|------------|-----------------|--------|------------------|
+| TC_Login_001 | Login | Verify login with valid credentials | User must be registered | 1. Navigate to login page <br> 2. Enter valid username & password <br> 3. Click **Login** | User is redirected to dashboard | Pass | N/A |
+| TC_Login_002 | Login | Verify login with invalid password | User must be registered | 1. Navigate to login page <br> 2. Enter valid username & invalid password <br> 3. Click **Login** | System shows error: *Invalid username or password* | Pass | N/A |
+
+---
+
+### 📝 Registration Module  
+
+| Test Case ID | Module | Title | Preconditions | Test Steps | Expected Result | Status | Defect Reference |
+|--------------|--------|-------|---------------|------------|-----------------|--------|------------------|
+| TC_Reg_001 | Registration | Verify new user registration | User not registered | 1. Open Registration page <br> 2. Fill mandatory fields (Name, Email, Password) <br> 3. Submit form | Account created & confirmation email sent | Pass | N/A |
+| TC_Reg_002 | Registration | Verify registration with existing email | Email already registered | 1. Open Registration page <br> 2. Enter already registered email <br> 3. Submit form | Error: *Email already exists* | Fail | BUG-101 |
+
+---
+
+### 🔎 Search Module  
+
+| Test Case ID | Module | Title | Preconditions | Test Steps | Expected Result | Status | Defect Reference |
+|--------------|--------|-------|---------------|------------|-----------------|--------|------------------|
+| TC_Search_001 | Search | Verify search with valid keyword | User logged in | 1. Enter valid keyword in search bar <br> 2. Click **Search** | Relevant search results displayed | Pass | N/A |
+| TC_Search_002 | Search | Verify search with invalid keyword | User logged in | 1. Enter random text `xyz@@` <br> 2. Click **Search** | No results found message should display | Pass | N/A |
+
+---
+
+### 💳 Payment Module  
+
+| Test Case ID | Module | Title | Preconditions | Test Steps | Expected Result | Status | Defect Reference |
+|--------------|--------|-------|---------------|------------|-----------------|--------|------------------|
+| TC_Pay_001 | Payment | Verify payment with valid credit card | User logged in & product in cart | 1. Proceed to checkout <br> 2. Select **Credit Card** <br> 3. Enter valid details <br> 4. Submit payment | Payment successful & order confirmed | Pass | N/A |
+| TC_Pay_002 | Payment | Verify payment with expired credit card | User logged in & product in cart | 1. Proceed to checkout <br> 2. Select **Credit Card** <br> 3. Enter expired card details <br> 4. Submit payment | Error: *Card expired / Invalid* | Fail | BUG-102 |
+
+---
+
+### 🚪 Logout Module  
+
+| Test Case ID | Module | Title | Preconditions | Test Steps | Expected Result | Status | Defect Reference |
+|--------------|--------|-------|---------------|------------|-----------------|--------|------------------|
+| TC_Logout_001 | Logout | Verify successful logout | User must be logged in | 1. Click **Logout** button | User logged out & redirected to homepage | Pass | N/A |
+
+---
+
+## 📊 Execution Status Legend  
+
+- **Pass** ✅ – Test executed successfully, meets expected result  
+- **Fail** ❌ – Test executed but outcome not as expected  
+- **Blocked** ⛔ – Test cannot be executed due to dependencies  
+- **Not Executed** ⏳ – Test not yet run  
+
+---
+
+## 🛠 Tools for Test Case Management  
+
+- **TestRail** – Test case management & reporting  
+- **TestLink** – Open-source test case management  
+- **JIRA / ClickUp / Redmine** – Defect tracking & linking test cases  
+
+---
+
+📌 This structure can be **directly reused for GitHub repos** or shared with teams for **manual testing documentation**.  

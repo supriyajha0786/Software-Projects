@@ -1,0 +1,115 @@
+# Flight CRS Manual Testing Project — Admin Booking Detail View
+
+This repository documents manual QA testing for the **Flight Booking Detail View** in the CRS admin panel.
+
+## 📌 Project Overview
+The goal is to verify booking details rendering, admin actions, and error handling for the page:
+`/flightcrs/booking/flight/view?id=...`
+
+## 📂 Contents
+- **TestPlan.md** → Objectives, scope, strategy, tools
+- **TestCases/** → Test case files grouped by functionality
+  - DetailView_TestCases.md
+  - AdminActions_TestCases.md
+  - AccessNavigation_TestCases.md
+  - ErrorHandling_TestCases.md
+
+## 🎯 Purpose
+This project demonstrates structured manual QA coverage for:
+- Flight booking detail validation
+- Admin workflows (approve/cancel/modify)
+- Access and navigation checks
+- Error handling for invalid/missing bookings
+
+## 🛠 Tools Used
+- **Test Management**: TestRail, TestLink  
+- **Defect Tracking**: JIRA, ClickUp, Redmine  
+- **Browsers**: Chrome, Firefox, Edge  
+
+flight-crs-admin-testing/
+├── README.md
+├── TestPlan.md
+└── TestCases/
+    ├── DetailView_TestCases.md
+    ├── AdminActions_TestCases.md
+    ├── AccessNavigation_TestCases.md
+    └── ErrorHandling_TestCases.md
+
+# Test Plan — Flight CRS Admin Booking Detail View
+
+## 1. Objective
+Validate that the CRS admin flight booking detail view displays accurate booking information, supports admin actions, and handles errors gracefully.
+
+## 2. Scope
+- **In Scope**:  
+  - UI validation (booking info, formatting, navigation)  
+  - Admin actions (approve, cancel, modify)  
+  - Access control (authorized vs unauthorized users)  
+  - Error handling (invalid ID, server downtime)  
+
+- **Out of Scope**:  
+  - Performance testing  
+  - API-level testing  
+  - Backend service logic  
+
+## 3. Test Strategy
+- Functional Testing  
+- UI/UX Testing  
+- Boundary Testing  
+- Negative Testing  
+
+## 4. Entry Criteria
+- UAT environment accessible  
+- Valid booking IDs available  
+- Admin login credentials provided  
+
+## 5. Exit Criteria
+- All critical test cases executed  
+- No open high/critical severity defects  
+- Test summary report shared  
+
+## 6. Test Deliverables
+- Test Cases (in `/TestCases/`)  
+- Defect Reports (via JIRA/ClickUp/Redmine)  
+- Test Summary Report  
+
+## 7. Tools
+- Test Management: TestRail / TestLink  
+- Defect Tracking: JIRA / ClickUp / Redmine  
+- Browsers: Chrome, Firefox, Edge  
+
+# Test Cases — Flight Booking Detail View
+
+| TC ID     | Scenario                  | Steps                                                   | Expected Result |
+|-----------|---------------------------|---------------------------------------------------------|-----------------|
+| TC_DV_001 | Verify booking fields     | Open booking detail view with valid ID                  | Passenger info, itinerary, price, status displayed |
+| TC_DV_002 | Data formatting check     | Verify dates, times, currency formats                   | Properly formatted (DD/MM/YYYY, INR) |
+| TC_DV_003 | Breadcrumb navigation     | Click breadcrumb to return to booking list              | List view displayed |
+| TC_DV_004 | Read-only validation      | Verify fields not editable in view mode                 | No inline editing possible |
+
+# Test Cases — Admin Actions
+
+| TC ID     | Scenario                | Steps                                                   | Expected Result |
+|-----------|--------------------------|---------------------------------------------------------|-----------------|
+| TC_AA_001 | Approve booking         | Click "Approve" → confirm action                        | Status updates to "Approved", audit logged |
+| TC_AA_002 | Cancel booking          | Click "Cancel" → enter reason → confirm                 | Status updates to "Cancelled", reason saved |
+| TC_AA_003 | Modify booking          | Edit itinerary → save changes                           | Updated details reflect correctly |
+| TC_AA_004 | Trigger notification    | Perform action → check email/SMS                        | Correct notification sent |
+
+# Test Cases — Access & Navigation
+
+| TC ID     | Scenario                | Steps                                                   | Expected Result |
+|-----------|--------------------------|---------------------------------------------------------|-----------------|
+| TC_AN_001 | Authorized access       | Login as admin → open detail page                       | Booking view loads |
+| TC_AN_002 | Unauthorized access     | Try accessing without login                             | Redirected to login or "Access Denied" |
+| TC_AN_003 | Navigation check        | Use back button / home link                             | Correct page opens |
+
+# Test Cases — Error Handling
+
+| TC ID     | Scenario                | Steps                                                   | Expected Result |
+|-----------|--------------------------|---------------------------------------------------------|-----------------|
+| TC_EH_001 | Invalid booking ID      | Enter malformed ID in URL                               | Error: "Booking not found" |
+| TC_EH_002 | Deleted booking ID      | Access deleted booking                                  | Error displayed gracefully |
+| TC_EH_003 | Server error            | Simulate server downtime                                | "Service unavailable" message shown |
+| TC_EH_004 | Slow loading            | Simulate delay                                          | Loading spinner until page loads or times out |
+

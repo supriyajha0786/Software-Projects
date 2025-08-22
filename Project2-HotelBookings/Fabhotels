@@ -1,0 +1,127 @@
+
+## 🏨 FabHotels Manual Testing Project
+
+### 📌 Project Overview
+
+Simulate end-to-end **manual testing** of the **FabHotels booking workflow**, covering user journeys from hotel search to booking confirmation, loyalty program functionality, and cancellation & refund policy validation.
+
+---
+
+### 🔍 Key Testing Areas (Based on Site Features)
+
+* **Hotel search with filters**: location, dates, price, amenities, “near me” capability
+* **Booking process**: including “Pay at Hotel” and “Book Now, Pay Later” options
+* **Cancellation policies**:
+
+  * Free cancellation >24 hours before check-in
+  * 1-night charge if cancelled 0–24 hours before check-in
+* **Loyalty (A-List) membership features**:
+
+  * Tier levels (Blue, Silver, Gold, Platinum)
+  * Fab credit earning, tier eligibility, membership benefits
+* **User account functions**: booking status view, profile update, My Bookings section
+
+---
+
+### 📂 Suggested GitHub Repo Structure
+
+```
+fabhotels-manual-testing/
+├── README.md
+├── TestPlan.md
+└── TestCases/
+    ├── HotelSearch_TestCases.md
+    ├── BookingFlow_TestCases.md
+    ├── CancellationRefund_TestCases.md
+    ├── LoyaltyProgram_TestCases.md
+    └── UserAccount_TestCases.md
+```
+
+---
+
+### 📄 File Content Overview
+
+# FabHotels Manual Testing Project
+
+A manual testing suite for core workflows of FabHotels.com.  
+Includes structured test planning and organized test cases across key modules.
+
+## Components
+- **TestPlan.md** – Objectives, scope, strategy, environments.
+- **TestCases/** – Detailed test cases for each module:
+  - Hotel Search  
+  - Booking Flow  
+  - Cancellation & Refund  
+  - Loyalty Program  
+  - User Account
+
+Purpose: Demonstrate comprehensive QA coverage of a hotel booking platform.
+```
+
+---
+
+#### **TestPlan.md**
+
+* **Objective**: Validate critical customer interactions—search, booking, cancellation, loyalty.
+* **Scope**:
+
+  * *In Scope*: UI flows, form validation, loyalty tiers, policies.
+  * *Out of Scope*: Backend APIs, performance testing.
+* **Strategy**: Functional, UI/UX, negative scenarios, policy validation across browsers/devices.
+* **Entry Criteria**: Stable build, test data ready, access to site environment.
+* **Exit Criteria**: Completion of critical/major test cases, defects resolved.
+* **Test Management Tools**: TestRail, TestLink
+* **Defect Tracking Tools**: JIRA, ClickUp, Redmine
+
+---
+
+### 🧪 Sample Test Cases
+
+#### **HotelSearch\_TestCases.md**
+
+| TC ID       | Scenario                  | Steps                                                        | Expected Result                               |
+| ----------- | ------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| TC\_HS\_001 | Search using city & dates | 1. Enter city (e.g. Delhi) <br>2. Select dates <br>3. Search | Available hotels shown with correct rates     |
+| TC\_HS\_002 | Filter “Near Me” hotels   | 1. Apply “Near Me” filter <br>2. Search                      | Nearby hotels listed correctly                |
+| TC\_HS\_003 | Filter by amenities       | 1. Select filters (Wi-Fi, parking) <br>2. Search             | Only hotels with selected amenities displayed |
+
+---
+
+#### **BookingFlow\_TestCases.md**
+
+* **TC\_BF\_001**: Standard online booking with immediate payment → booking confirmation issued
+* **TC\_BF\_002**: Use “Pay at Hotel” option → booking reserved, payment deferred
+* **TC\_BF\_003**: Use “Book Now, Pay Later” option → booking reserved, payment processed later
+
+---
+
+#### **CancellationRefund\_TestCases.md**
+
+* **TC\_CR\_001**: Cancel booking >24 hrs before check-in → no charge, refund initiated
+* **TC\_CR\_002**: Cancel booking <24 hrs before → 1-night charge applied, partial refund processed
+
+---
+
+#### **LoyaltyProgram\_TestCases.md**
+
+* **TC\_LP\_001**: User makes first booking → achieves "Blue" tier membership
+* **TC\_LP\_002**: Silver tier eligibility validation (3 bookings or 5k credits)
+* **TC\_LP\_003**: Verify Fab credits earned post-booking and credited within 48 hours
+
+---
+
+#### **UserAccount\_TestCases.md**
+
+* **TC\_UA\_001**: View “My Bookings” after login → booking history displayed correctly
+* **TC\_UA\_002**: Update user profile (e.g., update mobile number) → profile saved successfully
+* **TC\_UA\_003**: Cancel booking from “My Bookings” → cancellation reflected in system
+
+---
+
+### 🎯 Why This Project Is Valuable
+
+* Covers **real-world hotel booking scenarios** with business logic validation.
+* Demonstrates **end-to-end manual QA coverage** across multiple flows.
+* Extensible for **automation and API testing** in future.
+
+---
