@@ -1,0 +1,86 @@
+# 🏨 Hotel Booking API Testing (Postman Project)
+
+## 📌 Project Overview
+This project validates the **end-to-end Hotel Booking APIs** using **Postman** and **Newman**.  
+The test scenarios cover **hotel search, booking, retrieval, payment validation, and cancellation** to ensure the system works as expected.
+
+---
+
+## 🔧 Tools & Technology
+- **Postman** → API request creation & execution  
+- **Newman** → CLI automation for Postman collections  
+- **Environment Variables** → Base URL, Auth Token, Hotel IDs, Dates  
+- **Jenkins (Optional)** → CI/CD integration for automated API test runs  
+
+---
+
+## 🔍 Scope of Testing
+1. **Hotel Search API**  
+   - Validate `200 OK` response.  
+   - Verify hotels are listed correctly based on **city, check-in, and check-out dates**.  
+   - Schema validation → hotelId, name, price, rating, availability.  
+
+2. **Hotel Details API**  
+   - Fetch hotel details by `hotelId`.  
+   - Validate **amenities, room types, and cancellation policy**.  
+
+3. **Booking API**  
+   - Create booking with valid **customer + payment details**.  
+   - Ensure booking ID is generated & status = **CONFIRMED**.  
+   - Negative case: invalid payment → proper error response.  
+
+4. **Booking Retrieval API**  
+   - Fetch booking by `bookingId`.  
+   - Validate booking info matches request data.  
+
+5. **Cancellation API**  
+   - Cancel confirmed booking.  
+   - Validate status = **CANCELLED** and refund processed.  
+
+---
+
+## ✅ Test Coverage
+- **Positive Scenarios** → Successful search, booking, confirmation, cancellation.  
+- **Negative Scenarios** → Invalid dates, invalid hotelId, expired token, payment failure.  
+- **Performance** → API response time < **2 seconds**.  
+- **Security** → Unauthorized requests (without token) return `401 Unauthorized`.  
+
+---
+
+## 📊 Sample Postman Assertions
+```javascript
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response contains bookingId", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property("bookingId");
+});
+
+pm.test("Booking status is CONFIRMED", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.status).to.eql("CONFIRMED");
+});
+
+📂 Deliverables
+
+HotelBookingAPI.postman_collection.json → Postman Collection
+
+hotel_env.postman_environment.json → Environment Variables (Base URL, Auth Token, etc.)
+
+Newman Execution Reports (JSON/HTML)
+
+🚀 How to Run
+
+Import collection & environment in Postman.
+
+Run collection manually or via Collection Runner.
+
+To execute via Newman (CLI):
+
+newman run HotelBookingAPI.postman_collection.json -e hotel_env.postman_environment.json -r html
+
+
+View results in console or generated HTML report.
+
