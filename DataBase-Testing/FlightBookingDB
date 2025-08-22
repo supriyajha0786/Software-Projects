@@ -1,0 +1,175 @@
+
+# ✈️ Flight Search & Booking – Database Testing Project
+
+## 📌 Project Overview
+
+This project validates **Flight Search and Booking module** at the database level. The purpose is to ensure:
+
+* Flight inventory is stored correctly.
+* Search results match backend data.
+* Booking is inserted properly in DB with correct passenger and payment details.
+* Data integrity is maintained across multiple related tables.
+
+---
+
+## 🎯 Scope of DB Testing
+
+1. **Flight Search**
+
+   * Validate available flights based on source, destination, date, and class.
+   * Ensure flights displayed in UI match DB inventory.
+
+2. **Booking**
+
+   * Validate booking insertion (PNR generation).
+   * Ensure passenger and payment details are correctly mapped.
+   * Verify seat availability decreases after booking.
+
+3. **Data Integrity**
+
+   * Referential integrity between tables (`Flights`, `Bookings`, `Passengers`, `Payments`).
+   * No orphan records after booking cancellation.
+
+---
+
+## 🗄 Sample Database Schema
+
+**Tables:**
+
+1. `Flights`
+
+   * flight\_id, flight\_no, source, destination, departure\_time, arrival\_time, available\_seats, price
+
+2. `Bookings`
+
+   * booking\_id, flight\_id, user\_id, booking\_date, status, total\_amount
+
+3. `Passengers`
+
+   * passenger\_id, booking\_id, name, age, gender, seat\_no
+
+4. `Payments`
+
+   * payment\_id, booking\_id, amount, payment\_mode, payment\_status
+
+---
+
+## 🧪 Example SQL Queries for Testing
+
+### 🔍 **Flight Search Validation**
+
+```sql
+-- Verify flights available between DEL and BOM on 2025-08-23
+SELECT flight_no, source, destination, departure_time, available_seats, price
+FROM Flights
+WHERE source = 'DEL'
+  AND destination = 'BOM'
+  AND DATE(departure_time) = '2025-08-23';
+```
+
+✅ Expected: The results should match the flights shown in the application search.
+
+---
+
+### 🛒 **Booking Insertion Validation**
+
+```sql
+-- Validate booking details after a user books a flight
+SELECT * 
+FROM Bookings 
+WHERE user_id = 101 AND flight_id = 2201 
+ORDER BY booking_date DESC;
+```
+
+✅ Expected: A new booking record should be created with correct flight\_id, user\_id, status = 'CONFIRMED'.
+
+---
+
+### 👨‍👩‍👧 **Passenger Details Validation**
+
+```sql
+-- Verify passenger details linked to the booking
+SELECT P.passenger_id, P.name, P.seat_no
+FROM Passengers P
+JOIN Bookings B ON P.booking_id = B.booking_id
+WHERE B.booking_id = 5005;
+```
+
+✅ Expected: Passenger details must match booking form inputs.
+
+---
+
+### 💳 **Payment Record Validation**
+
+```sql
+-- Check payment status for a booking
+SELECT * 
+FROM Payments 
+WHERE booking_id = 5005;
+```
+
+✅ Expected: Payment entry exists with status = 'SUCCESS' and correct amount.
+
+---
+
+### 📉 **Seat Availability Update**
+
+```sql
+-- Verify seat count is reduced after booking
+SELECT available_seats
+FROM Flights
+WHERE flight_id = 2201;
+```
+
+✅ Expected: available\_seats should decrease by booked passenger count.
+
+---
+
+### ❌ **Booking Cancellation Validation**
+
+```sql
+-- Verify cancellation updates booking and seats correctly
+SELECT status FROM Bookings WHERE booking_id = 5005;
+
+SELECT available_seats FROM Flights WHERE flight_id = 2201;
+```
+
+✅ Expected:
+
+* Booking status → 'CANCELLED'.
+* Available seats increase by cancelled seats.
+
+---
+
+## 📊 Sample Test Metrics
+
+| Test Area      | Test Case ID | SQL Query Used | Expected Result                  | Status |
+| -------------- | ------------ | -------------- | -------------------------------- | ------ |
+| Flight Search  | FS\_01       | Search Query   | Flights match UI                 | Pass   |
+| Booking Insert | BK\_01       | Insert Check   | Booking record created           | Pass   |
+| Passenger Data | PS\_01       | Join Query     | Passenger linked to booking      | Pass   |
+| Payment Status | PY\_01       | Payment Query  | SUCCESS status                   | Pass   |
+| Seat Update    | ST\_01       | Availability   | Seat count reduced               | Pass   |
+| Cancellation   | CN\_01       | Cancel Query   | Seats restored, status CANCELLED | Pass   |
+
+---
+
+📂 **Suggested Repo Structure**
+
+```
+FlightBooking-DBTesting-Project/
+│── README.md
+│── TestCases_DB.xlsx (manual test cases with SQL)
+│── Queries/
+│     ├── flight_search.sql
+│     ├── booking_insert.sql
+│     ├── passenger_validation.sql
+│     ├── payment_validation.sql
+│     ├── cancellation.sql
+│── Reports/
+│     ├── TestExecutionReport.md
+```
+
+---
+
+
